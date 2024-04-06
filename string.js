@@ -74,3 +74,26 @@ var characterReplacement = (s, k) => {
 };
 
 console.debug(characterReplacement("ABAB"));
+
+
+// Given strings
+let str1 = "abcd";
+let str2 = "1234";
+
+// Function to merge two strings alternatively
+function mergeStrings(str1, str2) {
+    let mergedString = "";
+    for (let i = 0; i < str1.length || i < str2.length; i++) {
+        if (i < str1.length) {
+            mergedString += str1[i];
+        }
+        if (i < str2.length) {
+            mergedString += str2[i];
+        }
+    }
+    return mergedString;
+}
+
+// Merge the two strings alternatively
+let result = mergeStrings(str1, str2);
+console.log(result); // Output: "a1b2c3d4"
