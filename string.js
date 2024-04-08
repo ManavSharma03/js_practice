@@ -73,8 +73,7 @@ var characterReplacement = (s, k) => {
   console.debug({ mock });
 };
 
-console.debug(characterReplacement("ABAB"));
-
+// console.debug(characterReplacement("ABAB"));
 
 // Given strings
 let str1 = "abcd";
@@ -82,18 +81,62 @@ let str2 = "1234";
 
 // Function to merge two strings alternatively
 function mergeStrings(str1, str2) {
-    let mergedString = "";
-    for (let i = 0; i < str1.length || i < str2.length; i++) {
-        if (i < str1.length) {
-            mergedString += str1[i];
-        }
-        if (i < str2.length) {
-            mergedString += str2[i];
-        }
+  let mergedString = "";
+  for (let i = 0; i < str1.length || i < str2.length; i++) {
+    if (i < str1.length) {
+      mergedString += str1[i];
     }
-    return mergedString;
+    if (i < str2.length) {
+      mergedString += str2[i];
+    }
+  }
+  return mergedString;
 }
 
 // Merge the two strings alternatively
 let result = mergeStrings(str1, str2);
-console.log(result); // Output: "a1b2c3d4"
+// console.log(result); // Output: "a1b2c3d4"
+
+/**
+ * Given a string s which consists of lowercase or uppercase letters, return the length of the longest palindrome that can be built with those letters.
+
+  Letters are case sensitive, for example, "Aa" is not considered a palindrome here.
+  
+  Example 1:
+
+  Input: s = "abccccdd"
+  Output: 7
+  Explanation: One longest palindrome that can be built is "dccaccd", whose length is 7.
+ */
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+
+// need to fix te odd case
+var longestPalindrome = function (s) {
+  const charCount = {};
+  for (let index = 0; index < s.length; index++) {
+    const element = s[index];
+    charCount[element] = charCount[element] ? charCount[element] + 1 : 1;
+  }
+  let result = "";
+  let longestPalindromeStringLength = 0;
+  for (const key in charCount) {
+    const keyCountValue = charCount[key];
+    if (keyCountValue % 2 === 0) {
+      longestPalindromeStringLength += keyCountValue;
+    }
+    // if (!result && keyCountValue == 1) {
+    //   result += key;
+    // }
+    // if (result && keyCountValue < 2) {
+    // }
+  }
+  console.debug({ result, longestPalindromeStringLength });
+
+  return charCount;
+};
+
+console.debug(longestPalindrome("abccccdd"));
