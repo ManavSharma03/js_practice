@@ -73,7 +73,7 @@ var characterReplacement = (s, k) => {
   console.debug({ mock });
 };
 
-// console.debug(characterReplacement("ABAB"));
+console.debug(characterReplacement("ABAB", 2));
 
 // Given strings
 let str1 = "abcd";
@@ -143,4 +143,4 @@ var longestPalindrome = function (s) {
   return longestPalindromeStringLength + 1;
 };
 
-console.debug(longestPalindrome("aabcadd"));
+// console.debug(longestPalindrome("aabcadd"));
