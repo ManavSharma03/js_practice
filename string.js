@@ -114,29 +114,33 @@ let result = mergeStrings(str1, str2);
  * @return {number}
  */
 
-// need to fix te odd case
 var longestPalindrome = function (s) {
   const charCount = {};
   for (let index = 0; index < s.length; index++) {
     const element = s[index];
     charCount[element] = charCount[element] ? charCount[element] + 1 : 1;
   }
-  let result = "";
   let longestPalindromeStringLength = 0;
   for (const key in charCount) {
     const keyCountValue = charCount[key];
     if (keyCountValue % 2 === 0) {
       longestPalindromeStringLength += keyCountValue;
-    }
-    // if (!result && keyCountValue == 1) {
-    //   result += key;
-    // }
-    // if (result && keyCountValue < 2) {
-    // }
-  }
-  console.debug({ result, longestPalindromeStringLength });
+    } else {
+      const copyCharCount = { ...charCount };
+      delete copyCharCount[key];
 
-  return charCount;
+      const otherPresentValues = Object.values(copyCharCount);
+
+      const hasAnyOtherCharSameLength =
+        otherPresentValues.includes(keyCountValue);
+
+      longestPalindromeStringLength +=
+        hasAnyOtherCharSameLength && keyCountValue > 1
+          ? keyCountValue
+          : keyCountValue - 1;
+    }
+  }
+  return longestPalindromeStringLength + 1;
 };
 
-console.debug(longestPalindrome("abccccdd"));
+console.debug(longestPalindrome("aabcadd"));
