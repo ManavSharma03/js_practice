@@ -52,10 +52,12 @@ var lengthOfLongestSubstring = function (s) {
  * @return {number}
  */
 
-// need to fix this
+// need to fix this, we can use two loops to track the no of chars
 var characterReplacement = (s, k) => {
   let mock = s;
   let character = "";
+
+  let count = 0;
 
   for (let index = 0; index < s.length; index++) {
     const element = s[index];
@@ -64,13 +66,16 @@ var characterReplacement = (s, k) => {
     if (character && element !== character) {
       if (element !== s[index + 1]) {
         mock = mock.replace(element, character);
+        // count = 0;
       }
+    } else {
+      count++;
     }
 
     character = element;
   }
 
-  console.debug({ mock });
+  console.debug({ mock, count });
 };
 
 console.debug(characterReplacement("ABAB", 2));
