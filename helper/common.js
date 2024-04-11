@@ -1,3 +1,6 @@
+// common js logics for minor problems 
+
+
 export const getCharacterOccurrence = (s) => {
   const charCount = {};
   for (let index = 0; index < s.length; index++) {
