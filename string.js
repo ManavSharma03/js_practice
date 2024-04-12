@@ -78,7 +78,7 @@ var characterReplacement = (s, k) => {
   console.debug({ mock, count });
 };
 
-console.debug(characterReplacement("ABAB", 2));
+// console.debug(characterReplacement("ABAB", 2));
 
 // Given strings
 let str1 = "abcd";
@@ -149,3 +149,56 @@ var longestPalindrome = function (s) {
 };
 
 // console.debug(longestPalindrome("aabcadd"));
+
+/**
+ * Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+  An input string is valid if:
+
+  Open brackets must be closed by the same type of brackets.
+  Open brackets must be closed in the correct order.
+  Every close bracket has a corresponding open bracket of the same type.
+  
+
+  Example 1:
+
+  Input: s = "()[]{}"
+  Output: true
+  Example 2:
+
+  Input: s = "(]"
+  Output: false
+ */
+
+const checkValidBrackets = (str) => {
+  const stack = [];
+  const openBrackets = ["(", "{", "["];
+
+  for (let index = 0; index < str.length; index++) {
+    const element = str[index];
+
+    if (openBrackets.includes(element)) {
+      stack.push(element);
+      continue;
+    }
+
+    if (element === ")" && stack[stack.length - 1] === "(") {
+      stack.pop();
+      continue;
+    }
+    if (element === "}" && stack[stack.length - 1] === "{") {
+      stack.pop();
+      continue;
+    }
+    if (element === "]" && stack[stack.length - 1] === "[") {
+      stack.pop();
+      continue;
+    }
+  }
+  console.debug({ stack });
+
+  return !stack?.length;
+};
+
+// need to fix this case
+console.debug(checkValidBrackets("({({})})}"));
