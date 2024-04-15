@@ -194,12 +194,14 @@ const checkValidBrackets = (str) => {
       stack.pop();
       continue;
     }
+
+    if (!stack.length && element) {
+      stack.push(element);
+      continue;
+    }
   }
-  console.debug({ stack });
 
   return !stack?.length;
 };
 
-// need to fix this case,there might be 
-// some more edge case's 
-console.debug(checkValidBrackets("({({})})}"));
+// console.debug(checkValidBrackets("{}}"));
