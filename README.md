@@ -1,3 +1,3 @@
 # practice problems for JS concepts 
 
-# currently we have problems for array and strings only
+# Will be adding theoretical questions for each data types, as we have more problems and topics to add
