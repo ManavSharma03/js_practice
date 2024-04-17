@@ -205,3 +205,71 @@ const checkValidBrackets = (str) => {
 };
 
 // console.debug(checkValidBrackets("{}}"));
+
+
+/**
+ * Given a balanced parentheses string s, return the score of the string.
+
+  The score of a balanced parentheses string is based on the following rule:
+
+  "()" has score 1.
+  AB has score A + B, where A and B are balanced parentheses strings.
+  (A) has score 2 * A, where A is a balanced parentheses string.
+  
+
+  Example 1:
+
+  Input: s = "()"
+  Output: 1
+  Example 2:
+
+  Input: s = "(())"
+  Output: 2
+ */
+
+
+  const isParenthesisBalanced = (str) => {
+
+    if(!checkValidBrackets(str)) return 0;
+
+
+    const stack = [];
+    const openBrackets = ["(", "{", "["];
+
+    let score = 0;
+  
+    for (let index = 0; index < str.length; index++) {
+      const element = str[index];
+  
+      if (openBrackets.includes(element)) {
+        stack.push(element);
+        continue;
+      }
+  
+      if (element === ")" && stack[stack.length - 1] === "(") {
+        stack.pop();
+        score++
+        continue;
+      }
+      if (element === "}" && stack[stack.length - 1] === "{") {
+        stack.pop();
+        score++
+        continue;
+      }
+      if (element === "]" && stack[stack.length - 1] === "[") {
+        stack.pop();
+        score++
+        continue;
+      }
+  
+      if (!stack.length && element) {
+        stack.push(element);
+        continue;
+      }
+    }
+  
+    return score;
+  };
+
+  console.debug(isParenthesisBalanced("(()){}"))
+
