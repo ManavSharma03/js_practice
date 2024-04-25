@@ -13,23 +13,32 @@
     Input: n = 19
     Output: true
     Explanation:
-    12 + 92 = 82
-    82 + 22 = 68
-    62 + 82 = 100
-    12 + 02 + 02 = 1
+    1^2 + 9^2 = 82
+    8^2 + 2^2 = 68
+    6^2 + 8^2 = 100
+    1^2 + 0^2 + 0^2 = 1
  */
 
-const isNumberHappy = (num) => {
+const isNumberHappy = (numValue) => {
+  const notHappyNumbers = [];
   const calculateSquareAndLoop = (num) => {
     const singleDigit = num
       .split("")
-      .reduce((result = 0, next) => (result += Number(next) * Number(next)));
+      .map((num) => Number(num))
+      .reduce((result, next) => (result += Number(next) * Number(next)), 0);
 
-      console.debug({ singleDigit })
-    if (singleDigit === 1) return;
+    if (singleDigit == 1) return true;
+
+    const isNumberNotHappy = notHappyNumbers.includes(singleDigit);
+
+    if (isNumberNotHappy) return false;
+
+    notHappyNumbers.push(singleDigit);
+
+    return calculateSquareAndLoop(singleDigit.toString());
   };
-
-  calculateSquareAndLoop(num.toString());
+  return calculateSquareAndLoop(numValue.toString());
 };
 
-console.debug(isNumberHappy(19));
+// console.debug(isNumberHappy(1111111));
+// console.debug(isNumberHappy(2));
