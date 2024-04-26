@@ -73,3 +73,45 @@ const availablePrimeNumbers = (num) => {
 // console.debug(availablePrimeNumbers(1));
 // console.debug(availablePrimeNumbers(10));
 // console.debug(availablePrimeNumbers(0));
+
+/**
+ *Given an integer n, return true if it is a power of two. Otherwise, return false.
+
+  An integer n is a power of two, if there exists an integer x such that n == 2x.  
+
+  Example 1:
+
+  Input: n = 1
+  Output: true
+  Explanation: 2^0 = 1
+  
+  Example 2:
+
+  Input: n = 16
+  Output: true
+  Explanation: 2^4 = 16
+
+  Example 3:
+
+  Input: n = 3
+  Output: false
+ */
+
+const isNumberPowerOfTwo = (num) => {
+  let result = false;
+  let counter = 0;
+  let calPower;
+  do {
+    calPower = Math.pow(2, counter);
+    if (calPower === num) {
+      result = true;
+      break;
+    }
+    counter++;
+  } while (calPower < num);
+  return result;
+};
+
+// console.debug(isNumberPowerOfTwo(1))
+// console.debug(isNumberPowerOfTwo(3))
+// console.debug(isNumberPowerOfTwo(16))
