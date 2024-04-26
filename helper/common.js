@@ -1,5 +1,4 @@
-// common js logics for minor problems 
-
+// common js logics for minor problems
 
 export const getCharacterOccurrence = (s) => {
   const charCount = {};
@@ -22,3 +21,21 @@ export const getMaxOccurrenceCharAndCOunt = (s) => {
     }
   );
 };
+
+export const isNumberPrime = (num) => {
+  let isPrime = true;
+
+  for (let index = 2; index < num; index++) {
+    if (num % index === 0) {
+      isPrime = false;
+      break;
+    }
+  }
+  return isPrime;
+};
+
+// export default {
+//   getCharacterOccurrence,
+//   getMaxOccurrenceCharAndCOunt,
+//   isNumberPrime,
+// };

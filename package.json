@@ -1,0 +1,12 @@
+{
+  "name": "jspractice",
+  "version": "1.0.0",
+  "description": "# Will be adding theoretical questions for each data types, as we have more problems and topics to add",
+  "main": "array.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ManavSharma03",
+  "license": "ISC",
+  "type": "module"
+}
