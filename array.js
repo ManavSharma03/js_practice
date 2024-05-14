@@ -33,6 +33,7 @@ function smallestSubarraySumK(arr, k) {
   return result;
 }
 
+/**
 // Array of object modification using some logic and extracting required fields
 const mockProjects = [
   {
@@ -175,3 +176,22 @@ structuredProjects.forEach(info => {
 })
 
 console.debug({ structuredProjects, columns });
+*/
+
+/**
+ * Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+    Example 1:
+
+    Input: n = 3
+    Output: ["((()))","(()())","(())()","()(())","()()()"]
+    Example 2:
+
+    Input: n = 1
+    Output: ["()"]
+*/
+
+/**
+ * @param {number} n
+ * @return {string[]}
+ */
+var generateParenthesis = function (n) {};
