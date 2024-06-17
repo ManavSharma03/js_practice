@@ -171,7 +171,7 @@ structuredProjects.forEach(info => {
   const isExists = columns.find((val) => val.name === info.metric_display_name)
 
   if(!isExists){
-    columns.push({ name: info.metric_display_name, uid: "metric_display_value" },)
+    columns.push({ name: info.metric_display_name: uid: "metric_display_value" },)
   }
 })
 
@@ -195,3 +195,93 @@ console.debug({ structuredProjects, columns });
  * @return {string[]}
  */
 var generateParenthesis = function (n) {};
+
+const mockProblem1 = [
+  {
+    name: "A",
+    age: "",
+    salary: 30000,
+    department: "CS",
+  },
+  {
+    name: "B",
+    age: "",
+    salary: 23000,
+    department: "ART",
+  },
+  {
+    name: "C",
+    age: "",
+    salary: 76000,
+    department: "COMM",
+  },
+  {
+    name: "D",
+    age: "",
+    salary: 50000,
+    department: "CS",
+  },
+  ,
+  {
+    name: "E",
+    age: "",
+    salary: 98000,
+    department: "ART",
+  },
+  {
+    name: "F",
+    age: "",
+    salary: 32000,
+    department: "COMM",
+  },
+  {
+    name: "G",
+    age: "",
+    salary: 44000,
+    department: "CS",
+  },
+];
+
+const sortBySalary = (dataToSort = mockProblem1, sortBy = "ASC") => {
+  const result = [];
+
+  dataToSort.forEach((info) => {
+    if (result?.length) {
+      const isCurrentInfoSalaryLess = result.findIndex((resultInfo) =>
+        sortBy === "ASC"
+          ? resultInfo?.salary > info?.salary
+          : resultInfo?.salary < info?.salary
+      );
+
+      console.debug({ isCurrentInfoSalaryLess });
+      if (isCurrentInfoSalaryLess > -1) {
+        result.splice(isCurrentInfoSalaryLess, 0, info);
+      } else {
+        result.push(info);
+      }
+    } else {
+      result.push(info);
+    }
+  });
+
+  return result;
+};
+
+// console.debug(sortBySalary(mockProblem1, 'DSC'));
+
+const groupBy = (dataToGroup = mockProblem1) => {
+  return dataToGroup.reduce((result = {}, currentInfo) => {
+    const final = { ...result };
+    if (
+      final[currentInfo.department] &&
+      final[currentInfo.department]?.length
+    ) {
+      final[currentInfo.department].push(currentInfo);
+    } else {
+      final[currentInfo.department] = [currentInfo];
+    }
+    return final;
+  }, {});
+};
+
+// console.debug(groupBy());
